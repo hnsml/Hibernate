@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="#{title.clients}">Clients</title>
+</head>
+<body>
+<h1 th:text="#{title.clients}">Clients</h1>
+
+<form action="/clients/search" method="get">
+  <input name="name" th:placeholder="#{label.search.by.name}" type="text">
+  <input name="contactPhone" th:placeholder="#{label.search.by.contact.phone}" type="text">
+  <input name="rentalWishes" th:placeholder="#{label.search.by.rental.wishes}" type="text">
+  <button th:text="#{label.search}" type="submit">Search</button>
+</form>
+
+<table>
+  <thead>
+  <tr>
+    <th th:text="#{label.id}">ID</th>
+    <th th:text="#{label.name}">Name</th>
+    <th th:text="#{label.contact.phone}">Contact Phone</th>
+    <th th:text="#{label.rental.wishes}">Rental Wishes</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="client : ${clients}">
+    <td th:text="${client.id}"></td>
+    <td th:text="${client.name}"></td>
+    <td th:text="${client.contactPhone}"></td>
+    <td th:text="${client.rentalWishes}"></td>
+    <td><a th:href="@{/clients/edit/{id}(id=${client.id})}" th:text="#{label.edit.client}">Edit
+      client</a></td>
+    <td><a th:href="@{/clients/delete/{id}(id=${client.id})}" th:text="#{label.delete.client}">Delete
+      client</a></td>
+  </tr>
+  </tbody>
+</table>
+
+<a href="/clients/add" th:text="#{label.add.new.client}">Add New Client</a>
+</body>
+</html>

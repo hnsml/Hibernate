@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="#{title.apartments}">Apartments</title>
+</head>
+<body>
+<h1 th:text="#{label.all.apartments}">All Apartments</h1>
+<table>
+  <thead>
+  <tr>
+    <th th:text="#{label.id}">ID</th>
+    <th th:text="#{label.address}">Address</th>
+    <th th:text="#{label.number.of.rooms}">Number of Rooms</th>
+    <th th:text="#{label.price}">Price</th>
+    <th th:text="#{label.landlord}">Landlord</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="apartment : ${apartments}">
+    <td th:text="${apartment.id}"></td>
+    <td th:text="${apartment.address}"></td>
+    <td th:text="${apartment.numberOfRooms}"></td>
+    <td th:text="${apartment.price}"></td>
+    <td th:text="${apartment.landlord.name}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
